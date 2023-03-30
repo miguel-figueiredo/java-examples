@@ -1,4 +1,4 @@
-package org.example;
+package org.example.sync;
 
 import io.smallrye.mutiny.Multi;
 import lombok.extern.slf4j.Slf4j;
