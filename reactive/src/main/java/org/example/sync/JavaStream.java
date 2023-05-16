@@ -1,15 +1,21 @@
 package org.example.sync;
 
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.function.Failable;
 
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 @Slf4j
 public class JavaStream {
 
     public static void main(String[] args) {
-        Stream.of(1, 2, 3, 4, 5)
-                .map(i -> i * i)
+        IntStream.range(0, 20).boxed()
+                .parallel()
+                .map(Failable.asFunction(i -> {
+                    Thread.sleep(1000);
+                    return i * i;
+                }))
                 .forEach(i -> log.info("Event: {}", i));
     }
 }
