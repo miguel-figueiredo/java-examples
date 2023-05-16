@@ -10,6 +10,7 @@ public class JavaStream {
 
     public static void main(String[] args) {
         IntStream.range(0, 20).boxed()
+                .parallel()
                 .map(Failable.asFunction(i -> {
                     Thread.sleep(1000);
                     return i * i;
