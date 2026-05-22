@@ -129,9 +129,6 @@ public class Consumer {
         Connection destConnection = destFactory.newConnection();
         Channel destChannel = destConnection.createChannel();
 
-        // Declare destination queue (durable, non-exclusive, non-auto-delete)
-        destChannel.queueDeclare(destQueue, true, false, false, null);
-
         System.out.printf("Moving messages from '%s' to '%s'...%n", sourceQueue, destQueue);
 
         int moved = 0;
